@@ -9,7 +9,7 @@ use crate::db::{query, DbCxn};
 
 mod model;
 mod utils;
-use crate::utils::read_file;
+use crate::utils::{read_file, read_file_bytes};
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -25,7 +25,7 @@ async fn main() -> Result<(), Error> {
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_dialog::init())
         .manage(client)
-        .invoke_handler(tauri::generate_handler![greet, query, read_file])
+        .invoke_handler(tauri::generate_handler![greet, query, read_file, read_file_bytes])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 
