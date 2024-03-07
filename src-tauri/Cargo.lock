@@ -114,6 +114,7 @@ dependencies = [
  "async_once",
  "chrono",
  "lazy_static",
+ "nom",
  "serde",
  "serde_json",
  "surrealdb",
